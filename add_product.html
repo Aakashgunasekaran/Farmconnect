@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        form {
+            max-width: 500px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Product</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="product_name">Product Name</label>
+        <input type="text" name="product_name" maxlength="15" required>
+
+        <label for="category">Category</label>
+        <input type="text" name="category" maxlength="20" required>
+
+        <label for="description">Description</label>
+        <textarea name="description" maxlength="75" rows="3"></textarea>
+
+        <label for="price_per_kg">Price per Kg</label>
+        <input type="number" name="price_per_kg" step="0.01" required>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" step="0.01" required>
+
+        <label for="harvest_date">Harvest Date</label>
+        <input type="date" name="harvest_date">
+
+        <label for="expiry_date">Expiry Date</label>
+        <input type="date" name="expiry_date">
+
+        <label for="organic">Organic</label>
+        <input type="text" name="organic" value="no">
+
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+</html>

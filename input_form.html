@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Crop Data</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/input_form.css' %}">
+</head>
+<body>
+    <h1>Enter Crop Data</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>State Name:</label><input type="text" name="state_name" required><br>
+        <label>District Name:</label><input type="text" name="district_name" required><br>
+        <label>Crop Year:</label><input type="number" name="crop_year" required><br>
+        <label>Season:</label><input type="text" name="season" required><br>
+        <label>Crop:</label><input type="text" name="crop" required><br>
+        <label>Area:</label><input type="number" name="area" step="0.01" required><br>
+        <button type="submit">Get Recommendation</button>
+    </form>
+</body>
+</html>

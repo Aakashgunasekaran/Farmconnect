@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather-Based Crop Recommendation</title>
+    <link rel="stylesheet" href="{% static 'css/weather.css' %}">
+</head>
+<body>
+    <h2>Enter Weather Details</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Temperature (°C):</label>
+        <input type="number" step="0.1" name="temperature" required><br>
+
+        <label>Humidity (%):</label>
+        <input type="number" step="0.1" name="humidity" required><br>
+
+        <label>Rainfall (mm):</label>
+        <input type="number" step="0.1" name="rainfall" required><br>
+
+        <label>Soil Type:</label>
+        <select name="soil_type">
+            <option value="sandy">Sandy</option>
+            <option value="loamy">Loamy</option>
+            <option value="clay">Clay</option>
+        </select><br>
+
+        <button type="submit">Recommend Crop</button>
+    </form>
+
+    {% if crop %}
+        <h3>🌱 Recommended Crop: <strong>{{ crop }}</strong></h3>
+    {% endif %}
+</body>
+</html>

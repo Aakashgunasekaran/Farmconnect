@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Product</title>
+    <link rel="stylesheet" href="{% static 'css/farmer_dashboard1.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Product</h1>
+        <p>Are you sure you want to delete <strong>{{ product.product_name }}</strong> (ID: {{ product.product_id }})?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete</button>
+            <a href="{% url 'crop_recommendation:your_products' %}"><button type="button">Cancel</button></a>
+        </form>
+    </div>
+</body>
+</html>

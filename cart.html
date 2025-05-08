@@ -1,0 +1,48 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Products</title>
+    <link rel="stylesheet" href="{% static 'css/farmer_dashboard1.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Uploaded Products</h1>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price per kg</th>
+                <th>Quantity</th>
+                <th>Harvest Date</th>
+                <th>Expiry Date</th>
+                <th>Actions</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price_per_kg }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.harvest_date }}</td>
+                <td>{{ product.expiry_date }}</td>
+                <td>
+                    <a href="{% url 'crop_recommendation:edit_product' product.product_id %}">Edit</a>
+                    <a href="{% url 'crop_recommendation:delete_product' product.product_id %}"
+                       onclick="return confirm('Are you sure you want to delete this product?');">
+                       Delete
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">You haven't uploaded any products yet.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+

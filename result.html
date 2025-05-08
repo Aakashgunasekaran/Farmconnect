@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Production</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/result.css' %}">
+</head>
+<body>
+    <h1>Crop Production</h1>
+    <table>
+        <tr>
+            <th>State Name</th>
+            <th>District Name</th>
+            <th>Crop Year</th>
+            <th>Season</th>
+            <th>Crop</th>
+            <th>Recommended Crop</th>
+            <th>Area (ha)</th>
+            <th>Predicted Production (tons)</th>
+        </tr>
+        {% for recommendation in recommendations %}
+        <tr>
+            <td>{{ recommendation.state_name }}</td>
+            <td>{{ recommendation.district_name }}</td>
+            <td>{{ recommendation.crop_year }}</td>
+            <td>{{ recommendation.season }}</td>
+            <td>{{ recommendation.crop }}</td>
+            <td>{{ recommendation.recommended_crop }}</td>
+            <td>{{ recommendation.area }}</td>
+            <td>{{ recommendation.predicted_production }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

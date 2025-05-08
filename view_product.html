@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <h1>Product List</h1>
+    <table border="1">
+        <tr>
+            <th>Product ID</th>
+            <th>Farmer ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price per Kg</th>
+            <th>Quantity</th>
+            <th>Harvest Date</th>
+            <th>Expiry Date</th>
+            <th>Organic</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.product_id }}</td>
+            <td>{{ product.farmer_id }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price_per_kg }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.harvest_date }}</td>
+            <td>{{ product.expiry_date }}</td>
+            <td>{{ product.organic }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

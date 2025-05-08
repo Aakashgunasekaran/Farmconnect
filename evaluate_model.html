@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluate Model</title>
+    <link rel="stylesheet" href="{% static 'css/eaval.css' %}">
+</head>
+<body>
+    <h2>Evaluate Crop Prediction Model</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Run Evaluation</button>
+    </form>
+
+    {% if evaluated %}
+        <h3>📊 Evaluation Results:</h3>
+        <ul>
+            <li><strong>Mean Absolute Error (MAE):</strong> {{ mae }}</li>
+            <li><strong>Mean Squared Error (MSE):</strong> {{ mse }}</li>
+            <li><strong>R-squared (R²):</strong> {{ r2 }}</li>
+        </ul>
+    {% endif %}
+</body>
+</html>

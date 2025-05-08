@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmConnect - Sell Your Produce</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/fp.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">FarmConnect</div>
+        <nav>
+            <ul>
+                    <li><a href="{% url 'crop_recommendation:form' %}" class="btn">Production Prediction</a></li>
+                    <li><a href="{% url 'crop_recommendation:evaluate_model' %}" class="btn">Production Evaluation</a></li>
+                    <li><a href="{% url 'crop_recommendation:weather_form' %}" class="btn">Crop Recommendation</a></li>
+                    <li><a href="{% url 'crop_recommendation:evaluate_weather' %}" class="btn">Evaluate Weather Prediction</a></li>
+                    <li><a href="{% url 'crop_recommendation:pdt_dashboard' %}" class="btn">Product Management</a></li>
+                    <li><a href="{% url 'crop_recommendation:logout' %}" class="btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Know Your Crop Production Level</h1>
+            <p>Connect the farmers with AI</p>
+            <a href="{% url 'crop_recommendation:register' %}" class="btn-primary">Get Started</a>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'images/farmer.jpg' %}" alt="Farmer selling the product">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose FarmConnect?</h2>
+        <div class="feature-boxes">
+            <div class="feature">
+                <i class='bx bx-money'></i>
+                <h3>Better Prices</h3>
+                <p>Sell directly to consumers and businesses at fair prices.</p>
+            </div>
+            <div class="feature">
+                <i class='bx bx-network-chart'></i>
+                <h3>Wider Reach</h3>
+                <p>Connect with buyers across cities and towns with ease.</p>
+            </div>
+            <div class="feature">
+                <i class='bx bx-leaf'></i>
+                <h3>Eco-Friendly</h3>
+                <p>Reduce waste and promote sustainable farming practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FarmConnect. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/fp.js' %}"></script>
+</body>
+</html>

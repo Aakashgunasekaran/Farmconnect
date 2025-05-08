@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logged Out - FarmConnect</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-header">
+            <h2>You have been logged out</h2>
+        </div>
+        <p style="text-align: center;">Thanks for visiting FarmConnect!</p>
+        <div class="input-box" style="text-align: center;">
+            <a href="{% url 'crop_recommendation:login' %}" class="btn-submit">Login Again</a>
+        </div>
+    </div>
+</body>
+</html>

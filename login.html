@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmConnect - Login</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-header">
+            <h2 class="title-login">Login</h2>
+        </div>
+
+        <!-- Show messages from views -->
+        {% if messages %}
+            <div class="error-message">
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST" class="login-form" action="{% url 'crop_recommendation:login' %}" autocomplete="off">
+            {% csrf_token %}
+
+            <div class="input-box">
+                <input type="email" name="email" class="input-field" id="log-email" placeholder="Enter your email" value="{{ form.email.value|default:'' }}" required>
+                <label for="log-email" class="label">Email</label>
+                <i class='bx bx-envelope icon'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password" class="input-field" id="log-pass" placeholder="Enter your password" required>
+                <label for="log-pass" class="label">Password</label>
+                <i class='bx bxs-lock-alt icon'></i>
+            </div>
+
+            <div class="input-box">
+                <button type="submit" class="btn-submit">Sign In</button>
+            </div>
+
+            <div class="switch-form">
+                <span>Don't have an account?</span>
+                <a href="{% url 'crop_recommendation:register' %}">Register</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

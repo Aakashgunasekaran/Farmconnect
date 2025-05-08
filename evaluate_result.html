@@ -1,0 +1,18 @@
+<!-- templates/crop_recommendation/evaluation_result.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Evaluation Result</title>
+    <link rel="stylesheet" href="{% static 'css/evaluate.css' %}">
+</head>
+<body>
+    <h2>📊 Evaluation Results</h2>
+    <ul>
+        <li><strong>Mean Absolute Error (MAE):</strong> {{ mae }}</li>
+        <li><strong>Mean Squared Error (MSE):</strong> {{ mse }}</li>
+        <li><strong>R-squared (R²):</strong> {{ r2 }}</li>
+    </ul>
+    <a href="{% url 'crop_recommendation:evaluate_model' %}">Evaluate Again</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+</head>
+<body>
+    <h1>Edit Product {{ product.product_id }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Name:</label><input type="text" name="product_name" value="{{ product.product_name }}"><br>
+        <label>Category:</label><input type="text" name="category" value="{{ product.category }}"><br>
+        <label>Description:</label><input type="text" name="description" value="{{ product.description }}"><br>
+        <label>Price per kg:</label><input type="text" name="price_per_kg" value="{{ product.price_per_kg }}"><br>
+        <label>Quantity:</label><input type="text" name="quantity" value="{{ product.quantity }}"><br>
+        <label>Harvest Date:</label><input type="date" name="harvest_date" value="{{ product.harvest_date }}"><br>
+        <label>Expiry Date:</label><input type="date" name="expiry_date" value="{{ product.expiry_date }}"><br>
+        <label>Organic:</label>
+        <select name="organic">
+            <option value="yes" {% if product.organic == "yes" %}selected{% endif %}>Yes</option>
+            <option value="no" {% if product.organic == "no" %}selected{% endif %}>No</option>
+        </select><br><br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - FarmConnect</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/farmer_dashboard.css' %}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">FarmConnect</div>
+    <nav>
+        <ul>
+           <li><a href="{% url 'crop_recommendation:logout' %}" class="btn">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="dashboard">
+    <h1>Welcome, {{ user.username }}</h1>
+    <div class="dashboard-options">
+        <a href="{% url 'crop_recommendation:add_product' %}" class="card">
+            <i class='bx bx-plus-circle'></i>
+            <span>Add Product</span>
+        </a>
+        <a href="{% url 'crop_recommendation:view_product' %}" class="card">
+            <i class='bx bx-show'></i>
+            <span>View Products</span>
+        </a>
+        <a href="{% url 'crop_recommendation:your_products' %}" class="card">
+            <i class='bx bx-cart'></i>
+            <span>My products</span>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 FarmConnect. All rights reserved.</p>
+</footer>
+
+<script src="{% static 'js/farmer_dashboard.js' %}"></script>
+</body>
+</html>

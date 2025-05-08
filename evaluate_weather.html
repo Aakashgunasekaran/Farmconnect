@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction</title>
+</head>
+<body>
+    <h1>Weather Prediction for Seattle</h1>
+
+    {% if evaluated %}
+    <h3>Prediction Result</h3>
+    <p><strong>Predicted Weather: </strong>{{ predicted_weather }}</p>
+    <p><strong>Model Accuracy: </strong>{{ accuracy }}%</p>
+
+    <h3>Evaluation Report</h3>
+    <pre>{{ report }}</pre>
+
+    <h3>Confusion Matrix</h3>
+    <pre>{{ matrix }}</pre>
+    {% else %}
+    <h3>Enter Weather Data for Prediction</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="precipitation">Precipitation (mm):</label><br>
+        <input type="number" id="precipitation" name="precipitation" required><br><br>
+
+        <label for="temp_max">Max Temperature (°C):</label><br>
+        <input type="number" id="temp_max" name="temp_max" required><br><br>
+
+        <label for="temp_min">Min Temperature (°C):</label><br>
+        <input type="number" id="temp_min" name="temp_min" required><br><br>
+
+        <label for="wind">Wind Speed (km/h):</label><br>
+        <input type="number" id="wind" name="wind" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+</body>
+</html>

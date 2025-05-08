@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+
+    <!-- External Icon CDN -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Django Static CSS -->
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-header">
+            <h2 class="title-register">Register</h2>
+        </div>
+
+        {% if messages %}
+            <div class="error-message">
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST" class="register-form" autocomplete="off">
+            {% csrf_token %}
+
+            <div class="input-box">
+                <input type="text" name="first_name" id="id_first_name" class="input-field" placeholder="Enter your name" value="{{ form.first_name.value|default:'' }}" required>
+                <label for="id_first_name" class="label">Full Name</label>
+                <i class='bx bx-user icon'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="kisan_id" id="id_kisan_id" class="input-field" placeholder="Enter your Kisan ID" value="{{ form.kisan_id.value|default:'' }}" required>
+                <label for="id_kisan_id" class="label">Kisan ID</label>
+                <i class='bx bx-id-card icon'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="date" name="dob" id="id_dob" class="input-field" value="{{ form.dob.value|default:'' }}" required>
+                <label for="id_dob" class="label">Date of Birth</label>
+                <i class='bx bx-calendar icon'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="email" name="email" id="id_email" class="input-field" placeholder="Enter your email" value="{{ form.email.value|default:'' }}" required>
+                <label for="id_email" class="label">Email</label>
+                <i class='bx bx-envelope icon'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password1" id="id_password1" class="input-field" placeholder="Enter your password" required>
+                <label for="id_password1" class="label">Password</label>
+                <i class='bx bxs-lock-alt icon'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password2" id="id_password2" class="input-field" placeholder="Re-enter your password" required>
+                <label for="id_password2" class="label">Re-enter Password</label>
+                <i class='bx bxs-lock-alt icon'></i>
+            </div>
+
+            <div class="input-box">
+                <button type="submit" class="btn-submit" id="RegisterBtn">Register</button>
+            </div>
+
+            <div class="switch-form">
+                <span>Already have an account?</span>
+                <a href="{% url 'crop_recommendation:login' %}">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Django Static JS -->
+    <script src="{% static 'js/register.js' %}"></script>
+</body>
+</html>
